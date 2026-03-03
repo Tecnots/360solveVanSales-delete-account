@@ -2,53 +2,136 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Delete Account - 360 Solve VanSales</title>
+  <title>360 Solve VanSales</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
-    h1 {
+
+    header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 15px 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav {
+      background: #f5f5f5;
+      padding: 10px 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    button.active {
+      background-color: #1a73e8;
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    h2 {
       color: #1a73e8;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <h1>Delete Account – 360 Solve VanSales</h1>
+  <header>
+    360 Solve VanSales
+  </header>
 
-  <p>
-    360 Solve VanSales is a company-managed application. 
-    User accounts are created and controlled by the respective company administrator.
-  </p>
+  <nav>
+    <button id="supportBtn" class="active" onclick="showSection('support')">Support</button>
+    <button id="deleteBtn" onclick="showSection('delete')">Delete Account</button>
+  </nav>
 
-  <h3>How to Request Account Deletion</h3>
-  <p>
-    If you would like to delete your account, please contact your company administrator.
-    The administrator will review and process your account deletion request.
-  </p>
+  <div class="container">
 
-  <h3>Data Deletion</h3>
-  <ul>
-    <li>User profile information</li>
-    <li>Login credentials</li>
-    <li>App access permissions</li>
-  </ul>
+    <!-- Support Section (Default Visible) -->
+    <div id="supportSection">
+      <h2>Support</h2>
+      <p>
+        For account-related support, please contact your company administrator.
+      </p>
+      <p>
+        For technical issues or application errors, please email:
+        <a href="mailto:contact@summit-me.com">contact@summit-me.com</a>
+      </p>
+    </div>
 
-  <h3>Data Retention</h3>
-  <p>
-    Sales transactions, financial records, and inventory data may be retained 
-    by the company for legal, accounting, and audit purposes as required by law.
-  </p>
+    <!-- Delete Account Section -->
+    <div id="deleteSection" class="hidden">
+      <h2>Delete Account</h2>
 
-  <h3>Processing Time</h3>
-  <p>
-    Account deletion requests are processed within 7–14 working days 
-    after approval by the company administrator.
-  </p>
+      <p>
+        360 Solve VanSales is a company-managed application.
+        User accounts are created and controlled by the respective company administrator.
+      </p>
+
+      <h3>How to Request Account Deletion</h3>
+      <p>
+        To delete your account, please contact your company administrator.
+        The administrator will review and process your request.
+      </p>
+
+      <h3>Data Deletion</h3>
+      <ul>
+        <li>User profile information</li>
+        <li>Login credentials</li>
+        <li>App access permissions</li>
+      </ul>
+
+      <h3>Data Retention</h3>
+      <p>
+        Sales transactions and financial records may be retained
+        for legal and accounting purposes as required by law.
+      </p>
+
+      <h3>Processing Time</h3>
+      <p>
+        Deletion requests are processed within 7–14 working days
+        after administrator approval.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    function showSection(section) {
+      document.getElementById('supportSection').classList.add('hidden');
+      document.getElementById('deleteSection').classList.add('hidden');
+      document.getElementById('supportBtn').classList.remove('active');
+      document.getElementById('deleteBtn').classList.remove('active');
+
+      if (section === 'support') {
+        document.getElementById('supportSection').classList.remove('hidden');
+        document.getElementById('supportBtn').classList.add('active');
+      } else {
+        document.getElementById('deleteSection').classList.remove('hidden');
+        document.getElementById('deleteBtn').classList.add('active');
+      }
+    }
+  </script>
 
 </body>
 </html>
