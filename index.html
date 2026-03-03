@@ -3,135 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <title>360 Solve VanSales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f4f7fb;
+      color: #333;
     }
 
     header {
-      background-color: #1a73e8;
+      background: linear-gradient(135deg, #1a73e8, #1558b0);
       color: white;
-      padding: 15px 20px;
+      padding: 18px 30px;
       font-size: 22px;
-      font-weight: bold;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     nav {
-      background: #f5f5f5;
-      padding: 10px 20px;
       display: flex;
-      gap: 10px;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
     }
 
     button {
-      padding: 8px 16px;
+      padding: 10px 22px;
+      border-radius: 25px;
       border: none;
       cursor: pointer;
-      background-color: #e0e0e0;
-      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     button.active {
-      background-color: #1a73e8;
+      background: #1a73e8;
       color: white;
     }
 
     .container {
-      max-width: 800px;
-      margin: 30px auto;
+      max-width: 850px;
+      margin: 0 auto 50px auto;
       padding: 20px;
     }
 
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
     h2 {
+      margin-top: 0;
       color: #1a73e8;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
 
     .hidden {
       display: none;
     }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    360 Solve VanSales
-  </header>
+<header>
+  360 Solve VanSales
+</header>
 
-  <nav>
-    <button id="supportBtn" class="active" onclick="showSection('support')">Support</button>
-    <button id="deleteBtn" onclick="showSection('delete')">Delete Account</button>
-  </nav>
+<nav>
+  <button id="supportBtn" class="active" onclick="showSection('support')">Support</button>
+  <button id="deleteBtn" onclick="showSection('delete')">Delete Account</button>
+</nav>
 
-  <div class="container">
+<div class="container">
 
-    <!-- Support Section (Default Visible) -->
-    <div id="supportSection">
-      <h2>Support</h2>
-      <p>
-        For account-related support, please contact your company administrator.
-      </p>
-      <p>
-        For technical issues or application errors, please email:
-        <a href="mailto:contact@summit-me.com">contact@summit-me.com</a>
-      </p>
-    </div>
-
-    <!-- Delete Account Section -->
-    <div id="deleteSection" class="hidden">
-      <h2>Delete Account</h2>
-
-      <p>
-        360 Solve VanSales is a company-managed application.
-        User accounts are created and controlled by the respective company administrator.
-      </p>
-
-      <h3>How to Request Account Deletion</h3>
-      <p>
-        To delete your account, please contact your company administrator.
-        The administrator will review and process your request.
-      </p>
-
-      <h3>Data Deletion</h3>
-      <ul>
-        <li>User profile information</li>
-        <li>Login credentials</li>
-        <li>App access permissions</li>
-      </ul>
-
-      <h3>Data Retention</h3>
-      <p>
-        Sales transactions and financial records may be retained
-        for legal and accounting purposes as required by law.
-      </p>
-
-      <h3>Processing Time</h3>
-      <p>
-        Deletion requests are processed within 7–14 working days
-        after administrator approval.
-      </p>
-    </div>
-
+  <!-- Support Section -->
+  <div id="supportSection" class="card">
+    <h2>Support</h2>
+    <p>
+      For account-related assistance, please contact your company administrator.
+    </p>
+    <p>
+      For technical issues or application errors, email us at:
+      <strong><a href="mailto:contact@summit-me.com">contact@summit-me.com</a></strong>
+    </p>
   </div>
 
-  <script>
-    function showSection(section) {
-      document.getElementById('supportSection').classList.add('hidden');
-      document.getElementById('deleteSection').classList.add('hidden');
-      document.getElementById('supportBtn').classList.remove('active');
-      document.getElementById('deleteBtn').classList.remove('active');
+  <!-- Delete Account Section -->
+  <div id="deleteSection" class="card hidden">
+    <h2>Delete Account</h2>
 
-      if (section === 'support') {
-        document.getElementById('supportSection').classList.remove('hidden');
-        document.getElementById('supportBtn').classList.add('active');
-      } else {
-        document.getElementById('deleteSection').classList.remove('hidden');
-        document.getElementById('deleteBtn').classList.add('active');
-      }
+    <p>
+      360 Solve VanSales is a company-managed application. User accounts are created and controlled by the respective company administrator.
+    </p>
+
+    <h3>How to Request Account Deletion</h3>
+    <p>
+      Please contact your company administrator to initiate the deletion process.
+      The administrator will verify and approve your request.
+    </p>
+
+    <h3>Data Deleted</h3>
+    <ul>
+      <li>User profile information</li>
+      <li>Login credentials</li>
+      <li>App access permissions</li>
+    </ul>
+
+    <h3>Data Retention</h3>
+    <p>
+      Sales transactions, financial records, and inventory data may be retained
+      for legal and audit requirements as mandated by law.
+    </p>
+
+    <h3>Processing Time</h3>
+    <p>
+      Account deletion requests are processed within 7–14 working days after approval.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 360 Solve VanSales. All rights reserved.
+</footer>
+
+<script>
+  function showSection(section) {
+    document.getElementById('supportSection').classList.add('hidden');
+    document.getElementById('deleteSection').classList.add('hidden');
+    document.getElementById('supportBtn').classList.remove('active');
+    document.getElementById('deleteBtn').classList.remove('active');
+
+    if (section === 'support') {
+      document.getElementById('supportSection').classList.remove('hidden');
+      document.getElementById('supportBtn').classList.add('active');
+    } else {
+      document.getElementById('deleteSection').classList.remove('hidden');
+      document.getElementById('deleteBtn').classList.add('active');
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
